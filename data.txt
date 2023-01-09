@@ -1,0 +1,101 @@
+ quantity=cart[i]['quantity'],
+
+==================================
+if request.method == "POST":
+        a = request.POST
+        order_id = ""
+        for key, val in a.items():
+            if key == 'razorpay_order_id':
+                order_id = val
+                break
+
+        user = Order.objects.filter(payment_id = order_id)
+        user.paid = True
+        user.save()
+====================================
+<a  id="rzp-button1" >Place Order</a>
+
+========================================
+
+<form action="success" method="post">
+{% csrf_token %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_e4H4B25xYLj3Kr", 
+    "amount": "50000",  
+    "currency": "INR",
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", 
+    "callback_url": "http://127.0.0.1:8000/success",
+    "prefill": {  
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</form>
+=============================================
+def success(request):
+    if request.method == "POST":
+        a = request.POST
+        order_id = ""
+        for key, val in a.items():
+            if key == 'razorpay_order_id':
+                order_id = val
+                break
+
+                user = Order.objects.filter(payment_id = order_id)
+                user.paid = True
+                user.save()
+    return render(request,"thankyou.html")
+=============================================
+    if request.method == "POST":
+        a = request.POST
+        order_id = ""
+        for key, val in a.items():
+            if key == 'razorpay_order_id':
+                order_id = val
+                break
+
+                user = Order.objects.filter(payment_id = order_id)
+                user.paid = True
+                user.save()
+
+===========================================
+<form action="{% url 'checkout' %}" method="post">
+                        {%csrf_token%}
+                        <input value="{{cart_total_amount}}" hidden name="amount">
+                        <a class="btn btn-outline-dark current-btn"> <button type="submit">checkout</button></a>
+</form>
+==============================================
+<form action="{% url 'cart_detail' %}" method="post">
+                    {%csrf_token%}
+                    <input value="{{cart_total_amount}}" hidden name="amount">
+                    <li class="lg-bag"><a href="cart/cart-detail/"><button type="submit"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <span class="header-action-num cart-number">{{request.session.cart|length}}</span></a></li>
+
+                </form>
+-------------------------------------------------------------------------------------------
+<form action="{% url 'placeorder' %}" method="post">
+                                {%csrf_token%}
+                                <input value="{{cart_total_amount|add:50|add:120}}" hidden name="amount">
+                                <a class="btn-hover"> <button type="submit" class="text-light">Continue</button></a>
+                            </form>
+
+================================================
+ <a class="btn-hover" href="{% url 'placeorder' %}"> <button type="submit" class="text-light">Continue</button></a> 

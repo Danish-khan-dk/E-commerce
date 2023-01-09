@@ -1,0 +1,68 @@
+{% extends 'master.html' %}
+{% block content %}
+  <section id="page-header" class="about-header">
+    <center><h2>#let's_talk</h2></center>
+    <center><p>LEAVE A MESSAGE, We love to hear from you!</p></center>
+  </section>
+
+  <section id="contact-details" class="section-p1">
+    <div class="details">
+      <span>GET IN TOUCH</span>
+      <h2>Visit one of our agency locations or contact us today</h2>
+      <h3>Head Office</h3>
+      <div>
+        <li>
+          <i class="fa-regular fa-map"></i>
+          <p>Chembur Indian Oil Nagar Mumbai 400043</p>
+        </li>
+        <li>
+          <i class="fa-regular fa-envelope"></i>
+          <p>danishkhan@gmail.com</p>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <p>danishkhan@gmail.com</p>
+        </li>
+        <li>
+          <i class="fa-regular fa-clock"></i>
+          <p>24X7</p>
+        </li>
+      </div>
+    </div>
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.1731759357363!2d72.97204441431924!3d19.187637087023894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8d834c00235%3A0x89ff617b4a6cbf6f!2sItvedant%20Education%20Pvt.%20Ltd%20-%20Thane!5e0!3m2!1sen!2sin!4v1670412138480!5m2!1sen!2sin"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  {% if request.user.is_authenticated %}
+  <section id="form-details">
+    <form method="post">
+      {%csrf_token%}
+      <span>LEAVE A MESSAGE</span>
+      <h2>We Love to hear from you</h2>
+      <input type="text" placeholder="Your Name" name="name">
+      <input type="text" placeholder="E-mail" name="email">
+      <input type="text" placeholder="Subject" name="subject">
+      <textarea name=" " id="" cols="30" rows="10" placeholder="Your Message" name="message"></textarea>
+      <button class="normal" type="submit">Submit</button>
+    </form>
+    <div class="people">
+      <div>
+        <img src="static/image/self.png" alt="">
+        <p><span>Danish Khan</span>Project Owner <br> Phone : +91 8898263031 <br> Email:danishkhan@gmail.com</p>
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <a href="login" class="btn btn-primary">Login for comments</a>
+
+  {% endif %}
+
+  {% endblock %}
+
+
+
+ 

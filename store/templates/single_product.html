@@ -1,0 +1,227 @@
+{% extends 'master.html' %}
+{% block content %}
+<!-- ========================= Product Details ======================== -->
+
+<!-- Product Details Area Start -->
+<div class="product-details-area pt-100px pb-100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+        <!-- Swiper -->
+        <div class="swiper-container zoom-top">
+          <div class="swiper-wrapper">
+          {% for i in prod.images_set.all %}
+            <div class="swiper-slide">
+              <img class="img-responsive m-auto" src="/{{i.image}}" alt="">
+              <a class="venobox full-preview" data-gall="myGallery"
+                href="/{{i.image}}">
+                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
+          <div class="swiper-wrapper">
+            {% for i in prod.images_set.all %}
+            <div class="swiper-slide">
+              <img class="img-responsive m-auto" src="/{{i.image}}" alt="">
+            </div>.
+            {% endfor %}
+          </div>
+          <!-- Add Arrows -->
+          <div class="swiper-buttons">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="product-details-content quickview-content ml-25px">
+          <h2>{{prod.name}}</h2>
+          <div class="pricing-meta">
+            <ul class="d-flex">
+              <li class="new-price">₹{{prod.price}}</li>
+            </ul>
+          </div>
+          <div class="pro-details-rating-wrap">
+            <div class="rating-product">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <span class="read-review"><a class="reviews" href="#">(5 Customer Review)</a></span>
+          </div>
+          <p class="mt-30px">Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip exet commodo consequat.Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip exet commodo consequat. Duis aute irure dolor</p>
+          
+          <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+            <span>Categories: </span>
+            <ul class="d-flex">
+              <li>
+                <a href="#">{{prod.categories}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="pro-details-quality">
+            <div class="pro-details-cart">  
+              <!-- <button class="add-cart"> Add To Cart</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <section id="prodetails" class="section-p1">
+    <div class="single-pro-image">
+        <img src="static/image/Products/f11_1.jpeg" width="100%" id="MainImg" alt="">
+
+    <div class="small-img-group">
+        <div class="small-img-col">
+            <img src="static/image/Products/f11_1.jpeg" width="100%" class="small-img" alt="">
+        </div>
+        <div class="small-img-col">
+            <img src="static/image/Products/f11_2.jpeg" width="100%" class="small-img" alt="">
+        </div>
+        <div class="small-img-col">
+            <img src="static/image/Products/f11_3.jpeg" width="100%" class="small-img" alt="">
+        </div>
+        <div class="small-img-col">
+            <img src="static/image/Products/f11_4.jpeg" width="100%" class="small-img" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="single-pro-details">
+      <h6>Home / T-Shirt</h6>    
+      <h4>Men's Fashion T Shirt</h4>
+      <h2>₹799</h2>
+      <select>
+        <option>Select Size</option>
+        <option>XL</option>
+        <option>XXL</option>
+        <option>Small</option>
+        <option>Large</option>
+      </select>
+      <input type="number" value="1">
+      <Button class="normal">Add To Cart</Button>
+      <h4>Product Details</h4>
+      <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit.  fuga suscipit. ipsa perspiciatis veritatis expedita dolorem. Sed molestiae velit rerum porro sint assumenda, at accusantium non quo maxime ab ducimus ea atque! Aliquid natus amet a alias dolorum atque officiis tempora enim sunt maxime! Eius nisi sunt quia quis aspernatur illo cumque consequatur quaerat praesentium, eligendi consectetur voluptatem, et, eaque nam error. Est, cumque temporibus!</span>
+    </div>
+  </section>
+  
+  <section id="product1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p> Summer Collection New Morden Design</p>
+    <div class="pro-container">
+      <div class="pro">
+        <img src="static/image/Products/f9_1.jpeg" alt="">
+        <div class="des">
+          <span>Zara</span>
+          <h5>Cartoon Astronaut T-Shirts</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>₹799</h4>
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+        <a href="#"><i class="fas fa-heart heart"></i></a>
+      </div>
+      <div class="pro">
+        <img src="static/image/Products/f3_1.jpeg" alt="">
+        <div class="des">
+          <span>Zara</span>
+          <h5>Cartoon Astronaut T-Shirts</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>₹799</h4>
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+        <a href="#"><i class="fas fa-heart heart"></i></a>
+      </div>
+      <div class="pro">
+        <img src="static/image/Products/f8_3.jpeg" alt="">
+        <div class="des">
+          <span>Zara</span>
+          <h5>Cartoon Astronaut T-Shirts</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>₹799</h4>
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+        <a href="#"><i class="fas fa-heart heart"></i></a>
+      </div>
+      <div class="pro">
+        <img src="static/image/Products/f5_3.jpeg" alt="">
+        <div class="des">
+          <span>Zara</span>
+          <h5>Cartoon Astronaut T-Shirts</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>₹799</h4>
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart cart"></i></a>
+        <a href="#"><i class="fas fa-heart heart"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+      <h4>Sign Up for Newsletter</h4>
+      <p>Get E-mail updates about our latest shop and <span>special offer.</span></p>
+    </div>
+    <div class="form">
+      <input type="email" placeholder="Your email address">
+      <button class="normal">Sign up</button>
+    </div>
+  </section> -->
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'master.html' %}
+{% block content %}
+<section class="video-part">
+    <div class="video">
+        <video autoplay muted loop src="../static/image/video3.mp4"></video>
+    </div>
+</section>
+
+
+<!-- Shop Page Start  -->
+<div class="shop-category-area pt-100px pb-100px">
+    <div class="">
+        <div class="row" style="margin-top: -60px;">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h3 class="title">Products</h3>
+                    <p>Collection New Morden Design</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -40px;">
+            <div class="col-lg-9 order-lg-last col-md-12 order-md-first">
+                <!-- Shop Top Area Start -->
+                <!-- Shop Top Area End -->
+                <!-- Shop Bottom Area Start -->
+                <div class="shop-bottom-area">
+                    <!-- Tab Content Area Start -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="shop-grid">
+                                    <div class="row mb-n-30px">
+                                        {% for i in product %}
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px pro">
+                                            <!-- Single Prodect -->
+                                            <div class="product">
+                                                <div class="thumb">
+                                                    <a href="product/{{i.id}}" class="image">
+                                                        <img src="{{i.image}}" alt="Product" />
+                                                        <img class="hover-image" src="{{i.image}}" alt="Product" />
+                                                    </a>
+                                                </div>
+                                                <div class="des">
+                                                    <span>{{i.brands}}</span>
+                                                    <h5>{{i.name}}</h5>
+                                                    <div class="star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <h4> ₹ {{i.price}}</h4>
+                                                </div>
+                                                <div class="actions">
+                                                    <!-- ============ Card Button ================ -->
+                                                    <button title="Add To Cart" class="action add-to-cart"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal-Cart-{{forloop.counter}}"><a
+                                                            href="#"><i
+                                                                class="fas fa-shopping-cart cart"></i></a></button>
+                                                    <!-- ========== View Button======== -->
+                                                    <button class="action quickview" data-link-action="quickview"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal-{{forloop.counter}}"><a
+                                                            href="#"><i
+                                                                class="fa-sharp fa-solid fa-expand heart"></i></a></button>
+                                                    <!-- =========== Heart Card ============ -->
+                                                    <a href="#"><i class="fas fa-heart heart2"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade mb-n-30px" id="shop-list">
+                                    <div class="shop-list-wrapper mb-30px">
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab Content Area End -->
+                    <!--  Pagination Area Start -->
+                    <!--  Pagination Area End -->
+                </div>
+                <!-- Shop Bottom Area End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="col-lg-3 order-lg-first col-md-12 order-md-last">
+                <div class="shop-sidebar-wrap">
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Top Categories</h4>
+                        <div class="sidebar-widget-category">
+                            <ul>
+                                <li><a href="shop" class="selected m-0">All Product</a></li>
+                                {% for i in categories %}
+                                <li><a href="/shop?categories={{i.id}}" class="selected m-0">{{i.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget mt-8">
+                        <h4 class="sidebar-title">Price Filter</h4>
+                        <div class="price-filter">
+                            <div class="price-slider-amount">
+                                {% for i in filter_price %}
+                                <li><a href="/shop?filter_price={{i.id}}" class="selected m-0">{{i.price}}</a></li>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Sidebar single item -->
+                    <div class="sidebar-widget">
+                        <h4 class="sidebar-title">Brands</h4>
+                        <div class="sidebar-widget-brand">
+                            <ul>
+                                <li><a href="shop" class="selected m-0">All Brands</a></li>
+                                {% for i in brands %}
+                                <li><a href="/shop?filter_brands={{i.id}}" class=""> {{i.brand}} </a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar single item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Page End  -->
+
+
+<section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+        <h4>Sign Up for Newsletter</h4>
+        <p>Get E-mail updates about our latest shop and <span>special offer.</span></p>
+    </div>
+    <div class="form">
+        <input type="email" placeholder="Your email address">
+        <button class="normal">Sign up</button>
+    </div>
+</section>
+
+{% endblock %}
